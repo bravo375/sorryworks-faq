@@ -24,13 +24,12 @@
                  [org.slf4j/log4j-over-slf4j "1.7.7"]]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
-  :migratus ~(or (get (System/getenv) "DATABASE_URL")
-                {:store                  :database
-                :migration-dir         "migrations"
-                :migration-table-name  "_migrations"
-                :db  {:classname  "org.postgresql.Driver"
-                :subprotocol  "postgresql"
-                :subname      "//localhost/sorryworks"}})
+  :migratus  {:store                  :database
+              :migration-dir         "migrations"
+              :migration-table-name  "_migrations"
+              :db  ~(or
+                       (get (System/getenv) "DATABASE_URL")
+                       "jdbc:postgresql://localhost/sorryworks")}
 
   :plugins [[migratus-lein "0.1.7"]]
 
