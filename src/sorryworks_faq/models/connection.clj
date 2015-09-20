@@ -1,5 +1,6 @@
 (ns sorryworks-faq.models.connection)
 
-(def db-spec {:classname    "org.postgresql.Driver"
-              :subprotocol  "postgresql"
-              :subname      "//localhost/sorryworks"})
+(def db-spec
+    (or
+     (get (System/getenv) "DATABASE_URL")
+     "jdbc:postgresql://localhost/sorryworks"))
