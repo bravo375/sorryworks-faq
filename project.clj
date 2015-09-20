@@ -14,6 +14,7 @@
 
                  [migratus "0.8.4"]
                  [migratus-lein "0.1.0"]
+                 [org.clojure/java.jdbc "0.3.5"]
                  [org.postgresql/postgresql "9.4-1201-jdbc41"]
 
                  [com.h2database/h2 "1.4.187"]
@@ -23,13 +24,13 @@
                  [org.slf4j/log4j-over-slf4j "1.7.7"]]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
-  :migratus {
-                :store                  :database
+  :migratus ~(or (get (System/getenv) "DATABASE_URL")
+                {:store                  :database
                 :migration-dir         "migrations"
                 :migration-table-name  "_migrations"
                 :db  {:classname  "org.postgresql.Driver"
                 :subprotocol  "postgresql"
-                :subname      "//localhost/sorryworks"}}
+                :subname      "//localhost/sorryworks"}})
 
   :plugins [[migratus-lein "0.1.7"]]
 
