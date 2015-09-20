@@ -12,14 +12,33 @@
                  ;; [io.pedestal/pedestal.immutant "0.4.0"]
                  ;; [io.pedestal/pedestal.tomcat "0.4.0"]
 
+                 [migratus "0.8.4"]
+                 [migratus-lein "0.1.0"]
+                 [org.postgresql/postgresql "9.4-1201-jdbc41"]
+
+                 [com.h2database/h2 "1.4.187"]
                  [ch.qos.logback/logback-classic "1.1.2" :exclusions [org.slf4j/slf4j-api]]
                  [org.slf4j/jul-to-slf4j "1.7.7"]
                  [org.slf4j/jcl-over-slf4j "1.7.7"]
                  [org.slf4j/log4j-over-slf4j "1.7.7"]]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
+  :migratus {
+                :store                  :database
+                :migration-dir         "migrations"
+                :migration-table-name  "_migrations"
+                :db  {:classname  "org.postgresql.Driver"
+                :subprotocol  "postgresql"
+                :subname      "//localhost/sorryworks"
+                :user          "postgres"
+                :password      "postgres" }}
+
+  :plugins [[migratus-lein "0.1.7"]]
+
   :profiles {:dev {:aliases {"run-dev" ["trampoline" "run" "-m" "sorryworks-faq.server/run-dev"]}
                    :dependencies [[io.pedestal/pedestal.service-tools "0.4.0"]]}
              :uberjar {:aot [sorryworks-faq.server]}}
+
   :main ^{:skip-aot true} sorryworks-faq.server)
+
 
