@@ -1,0 +1,7 @@
+(load "models/faq-model")
+(get-faqs db-spec)
+(load "models/faq-model")
+(ns sorryworks-faq.models.faq)
+(:doc (meta get-faqs))
+(get-faqs)
+(get-faqs db-spec)
