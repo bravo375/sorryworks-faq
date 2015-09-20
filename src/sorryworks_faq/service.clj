@@ -3,7 +3,9 @@
             [io.pedestal.http.route :as route]
             [io.pedestal.http.body-params :as body-params]
             [io.pedestal.http.route.definition :refer [defroutes]]
-            [ring.util.response :as ring-resp]))
+            [ring.util.response :as ring-resp]
+            [sorryworks-faq.models.faq-model :as faq]
+            [sorryworks-faq.models.connection :refer [db-spec]]))
 
 (defn about-page
   [request]
@@ -15,13 +17,18 @@
   [request]
   (ring-resp/response "Sorry Works FAQ"))
 
+(defn get-faqs
+  [request]
+  (bootstrap/json-response (faq/get-faqs db-spec)))
+
 (defroutes routes
   ;; Defines "/" and "/about" routes with their associated :get handlers.
   ;; The interceptors defined after the verb map (e.g., {:get home-page}
   ;; apply to / and its children (/about).
   [[["/" {:get home-page}
      ^:interceptors [(body-params/body-params) bootstrap/html-body]
-     ["/about" {:get about-page}]]]])
+     ["/about" {:get about-page}]
+     ["/faq" {:get get-faqs}]]]])
 
 ;; Consumed by sorryworks-faq.server/create-server
 ;; See bootstrap/default-interceptors for additional options you can configure
