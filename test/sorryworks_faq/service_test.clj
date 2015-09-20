@@ -3,10 +3,11 @@
             [io.pedestal.test :refer :all]
             [io.pedestal.http :as bootstrap]
             [sorryworks-faq.service :as service]
-            [sorryworks-faq.models.faq-model :as faq]))
+            [sorryworks-faq.models.faq-model :as faq]
+            [sorryworks-faq.models.connection :refer [db-spec]]))
 
 (deftest get-faqs-test
-  (is (= (count (faq/get-faqs faq/db-spec)) 3)))
+  (is (= (count (faq/get-faqs db-spec)) 3)))
 
 ;; (def service
 ;;   (::bootstrap/service-fn (bootstrap/create-servlet service/service)))
