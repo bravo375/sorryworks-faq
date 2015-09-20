@@ -1,4 +1,4 @@
-(ns sorryworks-faq.models.faq
+(ns sorryworks-faq.models.faq-model
   (:require [yesql.core :refer [defqueries]]))
 
 (def db-spec {:classname  "org.postgresql.Driver"
