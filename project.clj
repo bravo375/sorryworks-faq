@@ -18,7 +18,6 @@
                  [org.postgresql/postgresql "9.4-1201-jdbc41"]
                  [yesql "0.4.2"]
 
-                 [com.h2database/h2 "1.4.187"]
                  [ch.qos.logback/logback-classic "1.1.2" :exclusions [org.slf4j/slf4j-api]]
                  [org.slf4j/jul-to-slf4j "1.7.7"]
                  [org.slf4j/jcl-over-slf4j "1.7.7"]
