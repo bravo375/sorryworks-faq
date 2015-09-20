@@ -21,7 +21,8 @@
   ;; apply to / and its children (/about).
   [[["/" {:get home-page}
      ^:interceptors [(body-params/body-params) bootstrap/html-body]
-     ["/about" {:get about-page}]]]])
+     ["/about" {:get about-page}]
+     ["/faq" {:get get-faqs}]]]])
 
 ;; Consumed by sorryworks-faq.server/create-server
 ;; See bootstrap/default-interceptors for additional options you can configure

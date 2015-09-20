@@ -16,6 +16,7 @@
                  [migratus-lein "0.1.0"]
                  [org.clojure/java.jdbc "0.3.5"]
                  [org.postgresql/postgresql "9.4-1201-jdbc41"]
+                 [yesql "0.4.2"]
 
                  [com.h2database/h2 "1.4.187"]
                  [ch.qos.logback/logback-classic "1.1.2" :exclusions [org.slf4j/slf4j-api]]
@@ -39,5 +40,3 @@
              :uberjar {:aot [sorryworks-faq.server]}}
 
   :main ^{:skip-aot true} sorryworks-faq.server)
-
-
