@@ -29,9 +29,7 @@
                 :migration-table-name  "_migrations"
                 :db  {:classname  "org.postgresql.Driver"
                 :subprotocol  "postgresql"
-                :subname      "//localhost/sorryworks"
-                :user          "postgres"
-                :password      "postgres" }}
+                :subname      "//localhost/sorryworks"}}
 
   :plugins [[migratus-lein "0.1.7"]]
 
