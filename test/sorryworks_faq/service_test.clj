@@ -6,9 +6,7 @@
             [sorryworks-faq.models.faq-model :as faq]))
 
 (deftest get-faqs-test
-  (faq/get-faqs faq/db-spec))
-
-
+  (is (= (count (faq/get-faqs faq/db-spec)) 3)))
 
 ;; (def service
 ;;   (::bootstrap/service-fn (bootstrap/create-servlet service/service)))
